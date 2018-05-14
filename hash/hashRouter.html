@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hashRouter</title>
+</head>
+<body>
+	<a href="#/">首页</a>
+	<a href="#/user">用户</a>
+	<a href="#/game">游戏</a>
+	<p id="content"></p>
+	<button id="backBtn">返回</button>
+
+<script src="./hashRouter.js"></script>
+<script>
+	var content = document.getElementById('content');
+	var btn = document.getElementById('backBtn');
+	var Router = new HashRouter();
+
+	Router.route('/',function(){
+		content.innerHTML = '首页';
+	});
+	Router.route('/user',function(){
+		content.innerHTML = '用户';
+	})
+	Router.route('/game',function(){
+		content.innerHTML = '游戏';
+	})
+
+	btn.addEventListener('click',function(){
+		Router.back();
+	},false);
+</script>
+</body>
+</html>

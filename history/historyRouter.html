@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>historyRouter</title>
+</head>
+<body>
+	<ul id="ul">
+		<li><a href="/">首页</a></li>
+		<li><a href="/user">用户</a></li>
+		<li><a href="/game">游戏</a></li>
+	</ul>
+	<p id="content"></p>
+	<button id="backBtn">返回</button>
+
+<script src="./historyRouter.js"></script>
+<script>
+	var content = document.getElementById('content');
+	var btn = document.getElementById('backBtn');
+	var ul = document.getElementById('ul');
+	var Router = new HistoryRouter();
+
+	Router.route('/',function(){
+		content.innerHTML = '首页';
+	});
+	Router.route('/user',function(){
+		content.innerHTML = '用户';
+	})
+	Router.route('/game',function(){
+		content.innerHTML = '游戏';
+	})
+
+	ul.addEventListener('click',function(e){
+		if(e.target.tagName==='A'){
+			e.preventDefault();
+			Router.push(e.target.getAttribute('href'));
+		}
+	})
+
+
+	btn.addEventListener('click',function(){
+		Router.back();
+	},false);
+</script>
+</body>
+</html>
